@@ -79,37 +79,38 @@ with st.expander('Top 5 Aeropuertos con Mayor Número de Operaciones'):
     st.dataframe(df_top5_ops_aeropuerto)
 
 # DISEÑO DE 2 COLUMNAS PARA LAS GRÁFICAS DE BARRAS
-col4, col5 = st.columns(2)
-with col4:
-    #___________________________________________________________________________
-    # ANÁLISIS AEROPUERTOS CON MAYOR NÚMERO DE OPERACIONES
-    fig_barras = px.bar(
-        df_top5_ops_aeropuerto,
-        x='AEROPUERTO_OPERACION',
-        y='count',
-        title='Top 5 Aeropuertos con Mayor Número de Operaciones',
-        labels={
-            'AEROPUERTO_OPERACION': 'Aeropuerto',
-            'count': 'Número de Operaciones'
-        },
-        color='AEROPUERTO_OPERACION',
-        color_discrete_sequence=paleta_barras
-    )
-    fig_barras.update_layout(showlegend=False)
-    # Mostrar la gráfica de barras
-    st.plotly_chart(fig_barras, use_container_width=True)
+with st.container(border=True):
+    col4, col5 = st.columns(2)
+    with col4:
+        #___________________________________________________________________________
+        # ANÁLISIS AEROPUERTOS CON MAYOR NÚMERO DE OPERACIONES
+        fig_barras = px.bar(
+            df_top5_ops_aeropuerto,
+            x='AEROPUERTO_OPERACION',
+            y='count',
+            title='Top 5 Aeropuertos con Mayor Número de Operaciones',
+            labels={
+                'AEROPUERTO_OPERACION': 'Aeropuerto',
+                'count': 'Número de Operaciones'
+            },
+            color='AEROPUERTO_OPERACION',
+            color_discrete_sequence=paleta_barras
+        )
+        fig_barras.update_layout(showlegend=False)
+        # Mostrar la gráfica de barras
+        st.plotly_chart(fig_barras, use_container_width=True)
 
-with col5:
-    # ANÁLISIS DE RUTAS
-    df_top10_rutas = df_top10_rutas.sort_values('CANTIDAD', ascending=True)
-    fig_rutas = px.bar(
-        df_top10_rutas,
-        x='CANTIDAD',
-        y='RUTA',
-        title='Top 10 Rutas con Mayor Número de Operaciones',
-        color='CANTIDAD',
-        color_continuous_scale='tealgrn'
-    )
-    fig_rutas.update_coloraxes(showscale=False)
-    # Mostrar la gráfica de barras
-    st.plotly_chart(fig_rutas, use_container_width=True)
+    with col5:
+        # ANÁLISIS DE RUTAS
+        df_top10_rutas = df_top10_rutas.sort_values('CANTIDAD', ascending=True)
+        fig_rutas = px.bar(
+            df_top10_rutas,
+            x='CANTIDAD',
+            y='RUTA',
+            title='Top 10 Rutas con Mayor Número de Operaciones',
+            color='CANTIDAD',
+            color_continuous_scale='tealgrn'
+        )
+        fig_rutas.update_coloraxes(showscale=False)
+        # Mostrar la gráfica de barras
+        st.plotly_chart(fig_rutas, use_container_width=True)
