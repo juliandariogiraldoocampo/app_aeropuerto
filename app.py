@@ -66,11 +66,11 @@ st.image('encabezado.png', use_container_width=True)
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.metric('Mínimo', f'{minimo:.0f}', border=True)
+    st.metric('MÍNIMO', f'{minimo:.0f}', border=True)
 with col2:
-    st.metric('Media', f'{media:.0f}', border=True)
+    st.metric('MEDIA', f'{media:.0f}', border=True)
 with col3:
-    st.metric('Máximo', f'{maximo:.0f}', border=True)
+    st.metric('MÁXIMO', f'{maximo:.0f}', border=True)
 
 with st.expander('Ver Matriz de Datos'):
     st.dataframe(df)
